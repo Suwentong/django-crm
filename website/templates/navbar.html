@@ -1,0 +1,40 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'megafon_logo.png' %}" alt="Logo" width="36" height="32" class="d-inline-block align-text-top">
+        MegaFon CRM
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'customer' %}">Клиенты</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'record' %}">Обращения</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'complaint' %}">Жалобы</a>
+          </li>
+          
+        </ul>
+
+      </div>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'logout' %}"><i class="fa fa-fw fa-user" style="color: #00B856;"></i>{{ user.get_username }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'logout' %}"><i class="fa fa-sign-out" style="color: #00B856;" aria-hidden="true"></i></i>Выйти</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>

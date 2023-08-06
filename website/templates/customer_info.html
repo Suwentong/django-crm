@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <strong>{{ customer_info.first_name }} {{ customer_info.last_name }} {{ customer_info.patronymic }}</strong>
+    </div>
+    <div class="card-body">
+        <p class="card-text"><strong>ID: </strong>{{ customer_info.id }}</p>
+        <p class="card-text"><strong>Дата Создания: </strong>{{ customer_info.created_at }}</p>
+        <p class="card-text"><strong>Лицевой Счет: </strong>{{ customer_info.personal_account }}</p>
+        <p class="card-text"><strong>Телефон: </strong>{{ customer_info.phone }}</p>
+        <p class="card-text"><strong>Адрес: </strong>{{ customer_info.address }}</p>
+        <p class="card-text"><strong>Город: </strong>{{ customer_info.city }}</p>
+    </div>
+  </div>
+  
+  <br/><br/>
+  <a href="{% url 'home' %}" class="btn btn-secondary">Назад</a>
+  <div style="float:right;">
+    <a href="{% url 'update_customer' customer_info.id %}" class="btn btn-warning">Изменить</a>
+    <a href="{% url 'delete_customer' customer_info.id %}" class="btn btn-danger">Удалить</a>
+  </div>
+  
+  
+{% endblock %}

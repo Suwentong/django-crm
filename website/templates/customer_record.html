@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <strong>{{ customer_record.first_name }} {{ customer_record.last_name }} {{ customer_record.patronymic }}</strong>
+    </div>
+    <div class="card-body">
+        <p class="card-text"><strong>ID: </strong>{{ customer_record.id }}</p>
+        <p class="card-text"><strong>Дата Создания: </strong>{{ customer_record.created_at }}</p>
+        <p class="card-text"><strong>Лицевой Счет: </strong>{{ customer_record.personal_account }}</p>
+        <p class="card-text"><strong>Телефон: </strong>{{ customer_record.phone }}</p>
+        <p class="card-text"><strong>Обращение: </strong>{{ customer_record.record }}</p>
+        <p class="card-text"><strong>Ответственный: </strong>{{ customer_record.responsible_person }}</p>
+        <p class="card-text"><strong>Комментарий Специалиста: </strong>{{ customer_record.comment }}</p>
+        {% if customer_record.status == "in_progress" %}
+        <p class="card-text" >
+          <strong style="color: #000000;">Статус: </strong>
+          <strong style="color: #ffcc00;">На рассмотрении</strong></p>
+        {% else %}
+        <p class="card-text">
+          <strong style="color: #000000;">Статус: </strong>
+          <strong style="color: #00cc00;">Завершено</strong></p>
+        {% endif %}
+    </div>
+  </div>
+  
+  <br/><br/>
+  <a href="{% url 'home' %}" class="btn btn-secondary">Назад</a>
+  <div style="float:right;">
+    <a href="{% url 'update_record' customer_record.id %}" class="btn btn-warning">Изменить</a>
+    <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Удалить</a>
+  </div>
+  
+  
+{% endblock %}
